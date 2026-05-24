@@ -1,0 +1,90 @@
+import subprocess
+import os
+from datetime import datetime 
+import shutil
+import numpy as np
+import sys
+import configparser
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+input_folder = os.path.join(script_dir, "input")
+output_folder = os.path.join(script_dir, "output")
+# Path to the PHREEQC executable
+EXECUTABLE = "phreeqc" 
+# read all information from configfile
+if len(sys.argv) > 1:
+    configfn = sys.argv[1]
+else:
+    configfn = os.path.join(script_dir,"Controle_file.conf")
+
+config = configparser.ConfigParser(inline_comment_prefixes="#")
+config.read(configfn)
+
+# Flags for program flow
+DATABASE  = config.get("system", "DATABASE", fallback=True)
+OXIC= config.getboolean("batch", "OXIC", fallback=True)
+ANOXIC= config.getboolean("batch", "ANOXIC", fallback=True)
+SORPTION= config.getboolean("batch", "SORPTION", fallback=True)
+HEHE_BED= config.getboolean("site", "HEHE_BED", fallback=True)
+TUGOU_BANK =config.getboolean("site", "TUGOU_BANK", fallback=True) 
+NOEDLER =config.getboolean("validation", "NOEDLER", fallback=True) 
+
+open(os.path.join(output_folder, "scr.out"), 'w').close()
+files = os.listdir(input_folder)
+if len(files) == 1:
+    phrq_file = [file for file in os.listdir(input_folder) if file.endswith('.phrq')]
+    phrq_input_file = os.path.join(input_folder, phrq_file[0])
+elif len(files) > 1: 
+    if OXIC== True:  
+        if HEHE_BED == True:
+            phrq_file ='Oxic_Hehe_bed_Sorption.phrq'
+            Rsults_Fig6='Hehe_oxic_results.sel'
+
+        if TUGOU_BANK == True:
+            phrq_file ='Oxic_Tugou_bank_Sorption.phrq' 
+            Rsults_Fig6='Tugou_oxic_results.sel'
+
+        phrq_input_file = os.path.join(input_folder, phrq_file)
+        print('Oxic conditions model.')
+    elif ANOXIC==True:
+        if HEHE_BED == True:
+            phrq_file ='Anoxic_Hehe_bed_Sorption.phrq'  
+            Rsults_Fig6='Hehe_anoxic_results.sel'          
+        if TUGOU_BANK == True:
+            phrq_file ='Anoxic_Tugou_bank_Sorption.phrq' 
+            Rsults_Fig6='Tugou_anoxic_results.sel'
+        phrq_input_file = os.path.join(input_folder, phrq_file)
+        
+    elif NOEDLER == True:
+        phrq_file ='Noedler.phrq'
+        Rsults_Fig6='NDL_results.sel'
+        phrq_input_file = os.path.join(input_folder, phrq_file)
+        print('Noedler conditions model.')
+else: 
+    print('Error in input file and input folder.')
+
+def run_phreeqc(phrq_input_file,input_folder, output_folder):
+
+    out_file_path = os.path.join(output_folder, "output.out")
+    SCR = ("    "+output_folder+"/scr.out")
+
+    try:
+        # Run PHREEQC using subprocess
+        subprocess.run([EXECUTABLE, phrq_input_file, out_file_path, DATABASE,SCR])
+
+    except Exception as e:
+        print(f"Error running PHREEQC: {e}")
+
+# Run PHREEQC with the provided input script
+run_phreeqc(phrq_input_file, input_folder, output_folder)
+
+'''
+copy Result file to give it a name related to the results so we can plot Figure 6 with different influence of the 
+co-metabolic or biotically mediated pathways 
+'''
+source_file_path = os.path.join(output_folder, "Results.sel")
+copy_file_path=os.path.join(output_folder, Rsults_Fig6)
+# Copy the file with a new name
+shutil.copy(source_file_path , copy_file_path)
+
+print(f"File copied from {source_file_path} to {copy_file_path}")
