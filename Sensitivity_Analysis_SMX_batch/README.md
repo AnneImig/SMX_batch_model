@@ -218,3 +218,5 @@ python 02_Plotting_SI_results.py
    - Legend outside plots
    - Log scale for clarity
 
+### Acknowledgements
+We acknowledge Florian Konrads (Technical University Munich and Stadtwerke Munich) support with the sensivity analysis code. 
