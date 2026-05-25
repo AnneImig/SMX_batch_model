@@ -314,7 +314,7 @@ def plot_prior_vs_glue_subplots(prior_df, posterior, glue_df, output_dir, title=
 
     plt.tight_layout(rect=[0, 0, 0.95, 0.95])
 
-    out_file = os.path.join(output_dir, "FigS10_anoxic_H_PDF.png")
+    out_file = os.path.join(output_dir, "FigS4_anoxic_H_PDF.png")
     plt.savefig(out_file, dpi=300)
     plt.close()
 
