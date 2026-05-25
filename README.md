@@ -109,7 +109,7 @@ For three models one oxic, one anoxic and the Noedler model we have supplied the
 Sensitivity analysis files are stored in the Sensitivity_Analysis_SMX_batch folder. The readme.md file in the repository explains the workflow. 
 
 ## Acknowledgements
-We acknowledge the support of Florian Konrad (Technical University Munich and Stadtwerke Munich) with the sensitivity analysis code.
+We acknowledge the support of Florian Konrad (Technical University Munich and Stadtwerke Munich https://www.researchgate.net/profile/Florian-Konrad-3) with the sensitivity analysis code.
 
 
 Please don't hesitate to contact us, if you are interested in more details and procedures.

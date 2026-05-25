@@ -219,4 +219,4 @@ python 02_Plotting_SI_results.py
    - Log scale for clarity
 
 ### Acknowledgements
-We acknowledge the support of Florian Konrad (Technical University Munich and Stadtwerke Munich) with the sensitivity analysis code.
+We acknowledge the support of Florian Konrad (Technical University Munich and Stadtwerke Munich https://www.researchgate.net/profile/Florian-Konrad-3) with the sensitivity analysis code. 
