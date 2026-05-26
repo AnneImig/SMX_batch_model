@@ -4,7 +4,7 @@ Ma, Y., Modrzynski, J.J., Yang, Y., Aamand, J., Zheng, Y., 2021. Redox-dependent
 
 Nödler, K., Licha, T., Barbieri, M., Pérez, S., 2012. Evidence for the microbially mediated abiotic formation of reversible and non-reversible sulfamethoxazole transformation products during denitrification. Water Research 46, 2131–2139. https://doi.org/10.1016/j.watres.2012.01.028
 
-A publication with the results is submitted to Environmental International:
+A publication with the results is submitted to Environment International:
 Modeling reveals co-metabolic metabolite formation during redox-dependent transformation key to the fate of sulfamethoxazole in groundwater by Imig et al. 2026
 
 # Intallation
