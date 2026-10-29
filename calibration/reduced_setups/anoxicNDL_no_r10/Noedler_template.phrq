@@ -1,0 +1,319 @@
+Title Noedler Batch experiment 
+
+SOLUTION_MASTER_SPECIES
+Som           Som              0       32              32  
+Doc           Doc              0       32              32
+Undet         Undet            0       250             250
+Docr          Docr             0       32              32
+Amonia        Amonia           0       18              18
+Nit           Nit-             0       47              47
+Ammet         Ammet            0       Ammet           98.1
+Smz           Smz              0       Smz             278.33
+Smx           Smx             0       Smx             253.28
+Sdz           Sdz              0       Sdz             250.278
+Des           Des              0       Des             238.26
+Nitro	      Nitro            0       Nitro           283.26
+
+SOLUTION_SPECIES
+Som = Som
+    log_k     0
+Undet =Undet
+    log_k     0
+Doc = Doc
+    log_k     0
+Docr = Docr
+    log_k     0
+Amonia = Amonia
+    log_k     0
+Nit- = Nit-
+    log_k     0
+Nit- + H+ = H(Nit)
+	log_k 4.5e−4
+Smz= Smz
+    log_k 0
+Smx=Smx
+    log_k 0
+Sdz= Sdz
+    log_k 0
+Ammet= Ammet
+    log_k 0
+Des= Des
+    log_k 0
+Nitro =Nitro
+    log_k 0
+
+
+SOLUTION 1 Infiltration water
+units 		mol/kgw
+pH    		7.3
+temp    	25
+N(+5)		6.7E-2
+Ca	    	5.892821523e-3 charge
+Alkalinity 	7e-3 as HCO3-
+Doc 		7.15e-2
+Amonia   	1e-5 as AmmH+ # to incorporate in biomass
+Cl      	1.43e-3 
+#P       	1.77e-3 as PO4-2
+#S       	1.35e-3 as SO4-2
+Mg      	1.38e-3
+K       	2.41e-4
+Na      	2.25e-3
+Smx	        4e-6
+Fe          0.001
+-water 1 
+
+Equilibrium_phases  1
+Calcite 0 0
+Goethite 0 0.1
+Incremental_Reactions True    #less CPU intensive, other way of integrating time steps
+
+##################   KINETICS   #####################
+KINETICS 
+
+
+Som
+    -formula  Docr 1 Amonia 0.02
+    -m0 2e-3 #0.0049g/10ml TOC CH4O 32 mol/L 0.015 mol/L 15% solved in water 2.3e-3 mol/L DOC? 
+       -parms     0.01
+    -steps  0 900*0.1          #90 days in 900 time steps?
+
+Doc_r
+    -formula Docr  -1 Doc  1 
+    # Kmax = mol Docr / day 
+       -parms    1     
+
+Doc_Degradation_NITu
+    -formula  Doc  -1 Nit- +2.2 NO3- -2.2 C+4 1
+    #(1) K6 
+       -parms   0.12
+
+Doc_Degradation_NITdos
+    -formula  Doc  -15 Nit- -8 N2 +4 C+4 6 
+    # (1) K7 (2)  inhib_NO3 
+       -parms    0.3     3.5e-02
+
+######### Antibiotics forward ########################
+#sulfonamide transforamtion#
+Smx_Ammet
+    -formula Smx -1    Ammet 1
+    #	 k8 ( mol SMX/mol time)   	(2) inhib DOC 
+       -parms    0.0005     0.0315
+     #super sensitive only starting with numbers higher than 6e80
+
+
+Smx_NIT
+    -formula Smx -1 Nitro 1
+       -parms   6e7 #   2e12
+
+
+Smx_DES_N
+    -formula     Des 1 Smx -1  H(Nit) -1 Doc -1 C+4 +1 
+    #  	 k10 ( mol SMX/mol time)  	 
+       -parms   1e5 #8.8e7
+
+Smx_DES_O
+    -formula      Smx -1 Des +1 
+    #  	 k11 ( mol SMX/mol time)  
+       -parms   8.0
+
+Des_NIT_N
+     -formula    Des -1    Nitro +1  H+1 -1
+#      	  	k12  (anoxic mol SMX/mol time )
+       -parms  1.5e4  #2e6
+
+NIT_Smx_N
+     -formula Nitro -1 Smx 1
+ # k13
+       -parms     0.39 
+
+DES_Smx
+     -formula   Smx 1  Des -1 
+       #  	 k14 (  mol SMX/mol time)
+       -parms    2   2e-02
+
+       
+Smx_undet
+-formula Smx -1 Undet +1
+       -parms     2e2
+       
+Undet_Smx
+-formula Smx +1 Undet -1
+       -parms     4.1
+
+
+RATES
+
+##############################OC release##############################
+Som
+-start
+01 rate= parm(1)
+10 moles = rate*time 
+15 put(rate,01)
+20 SAVE moles
+-end
+
+ Doc_r
+-start
+01 mDocr       = tot("Docr")
+03 rate       = parm(1)*mDocr 
+10 moles      = rate *time
+15 put(rate,02)
+16 put(monod_DOCr,800)
+20 SAVE moles
+-end
+
+##############################Nitrogen species from DOC anoxic##############################
+##############################Denitrification##############################
+    Doc_Degradation_NITu
+-start
+40 rate_NO3   = parm(1)*tot("N(5)")*tot("Doc")
+50 put(rate_NO3, 13)
+60 moles 	  = (rate_NO3) *time
+70 SAVE moles
+-end
+
+    Doc_Degradation_NITdos
+-start
+10 mNO3  	  = tot("N(5)")
+40 inhib_NO3   = parm(2)/(parm(2)+mNO3)
+50 rate_NO2   = (parm(1)*tot("Nit")*tot("Doc")*inhib_NO3)
+55 put(rate_NO2, 14)
+60 moles 	  = (rate_NO2) *time
+70 SAVE moles
+-end
+
+
+######### SMX biotransformation oxygen ########################
+
+Smx_Ammet
+-start
+    09 mDoc         = tot("Doc")
+    10 inhib_DOC    = (parm(2)/(parm(2)+mDoc))
+    15 rate         = parm(1)*tot("Smx")*inhib_DOC
+	20 moles        = rate*time
+    35 put(rate, 18)
+	40 SAVE moles
+-end
+
+Smx_DES_O
+-start
+10 mSmx  	    = tot("Smx")
+35 mDoc        = tot('Doc')
+52  rate_SmxDes  = (parm(1)*mSmx* mDoc)
+55 put(rate_SmxDes, 191)
+60 moles 	  = (rate_SmxDes) *time  
+70 SAVE moles
+-end
+
+
+Smx_DES_N
+-start
+10 rate= parm(1)* mol("H(Nit)")*tot("Doc")*tot("Smx")
+11 put(rate, 19)
+20 moles 	  = rate *time  
+70 SAVE moles
+
+-end
+
+DES_Smx
+-start
+    01 mDes         = tot("Des")
+    02 mDOC 	    = tot("Doc")
+    03 inhib_Doc    = parm(2)/(parm(2)+mDOC)
+    #04 if mNO3>=1e-4 then goto 30
+    10 rate = parm(1)* mDes *(inhib_Doc )
+    15 put(rate, 32)
+	20 moles=rate*time
+	30 SAVE moles
+-end
+
+NIT_Smx_N
+-start
+    10 rate = (parm(1)*tot("Nitro"))
+    15 put(rate, 31)
+	20 moles=rate*time
+	30 SAVE moles
+-end
+
+Des_NIT_N
+-start
+    #10 HNO3= mol('H+')
+    11 HNO3= (mol("NO3-")*mol("H+"))/2.4
+    20 rate= parm(1)*tot("Des")*HNO3
+    25 put(rate, 210)
+	30 moles=rate*time
+	40 SAVE moles
+-end
+
+Smx_NIT
+-start
+	10 rate= parm(1)* mol("H(Nit)")*mol("H(Nit)")*tot("Smx")
+	20 moles=rate*time
+    35 put(rate, 20)
+	40 SAVE moles
+-end
+
+
+Smx_undet
+-start
+    01 mNO3  	  = tot("N(+5)")
+    02 mDoc         = tot("Doc")
+	10 rate= parm(1)* tot("Smx")*mNO3
+	20 moles=rate*time
+    35 put(rate, 990)
+	40 SAVE moles
+-end
+Undet_Smx
+-start
+	10 rate= parm(1)* tot("Undet")
+	20 moles=rate*time
+    35 put(rate, 999)
+	40 SAVE moles
+-end
+
+SELECTED_OUTPUT
+	-file /Users/SMX_batch_model/PHQ_Batch_reactive_kinetics/output/Results.sel
+	-time true
+	-reset false
+
+USER_PUNCH
+#Time	Doc	Docr	O2	Amonia	NO3-	NO2-	HNO2	DIC	N2	Fe2	rateSom	Docr	Nit1	Nit2	Docox	Desnit1	Desnit2	rateFe	pH	pe	BalN	BalC	Goet
+-headings Time Doc	Docr	O2	Amonia	NO3-	NO2-	HNO2	DIC	N2	Fe2	Som	Docr	Nit1	Nit2	Docox	Desnit1	Desnit2	rateFe	pH	pe	BalN	BalC	Goet Smx Sdz Smz Ammet DES rate_Smz rate_Sdz rate_Ammet rateDes_N Nit rateNit rateDES_NIT_O HNO3  rateNIT_Smx_O2  rateNIT_Smx_N rateDES_Smx_O2 rateDES_SMX_O2 rate_Ammet_CO2 TOTAL_SMX rate_Smx_DES_O  CO2 14C rateDES_NIT_N monod_DOCr Undetected rate_undet rateSmx_othermetabolites Alcohol undet_smx 
+	-start
+10 	PUNCH TOTAL_TIME
+20  PUNCH tot("Doc") tot("Docr")   MOL("O2")  tot("Amonia")  tot("N(5)")  tot("Nit")  mol("H(Nit)")  tot("C(4)") tot("N(0)") 
+30  TOTAL_N = tot("N(5)")+tot("Amonia")+tot("Nit")+tot("N(0)")+tot("N(3)")
+40  TOTAL_C = tot("C(4)")+tot("Doc")+tot("Docr")+kin("Som")+tot("C(-4)")
+# 01 Som 02 Doc_r 10 Nit1 11 Nit2 12 Doc_Degradation_OX  13 Doc_Degradation_NITu 14 Doc_Degradation_NITdos 15 Doc_Degradation_Iron
+50  PUNCH tot("Fe(2)") get(01) get(02) get(10) get(11) get(12) get(13) get(14) get(15)
+60  PUNCH - la("H+") 
+70  PUNCH - la("e-") 
+80  PUNCH TOTAL_N TOTAL_C  equi("Goethite") 
+
+90 PUNCH tot('Smx')  tot('Sdz') tot('Smz') tot("Ammet") tot('Des') get(16) get(17) get(18) get(19) tot("Nitro") get(20) get(21) 
+100 HNO3= (mol("NO3-")*mol("H+"))/2.4e-4
+110 PUNCH HNO3  #= mol('H+')
+# get 30> NIT_Smx_O2 get (31) NIT_Smx_N 32 DES_Smx_O2 33 DES_Smx_N 34 rateAMM_CO2
+120 PUNCH get (30) get (31) get(32) get(33) get(34)
+130 TOTAL_SMX = tot('Smx')+ tot("Ammet")+ tot('Des')+tot("Nitro")
+140 PUNCH TOTAL_SMX
+# get(191) rate_Smx_DES_O get(210) rateDES_NIT_N
+150 PUNCH get(191) MOL("CO2") TOT("Label") get(210) get(800) tot('Undet') get(990) get(900) TOT('Alc')  get(999) 
+  	-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

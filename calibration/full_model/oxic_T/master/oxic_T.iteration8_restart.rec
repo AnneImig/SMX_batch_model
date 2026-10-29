@@ -1,0 +1,726 @@
+             pestpp-ies - a GLM iterative Ensemble Smoother
+                      for PEST(++) datasets 
+
+                 by the PEST++ development team
+
+
+
+
+
+version: 5.2.29
+binary compiled on Oct 22 2026 at 18:58:22
+using control file: "oxic_T.pst"
+in directory: "calibration/<set-up>/master"
+on host: "vm"
+on a(n) linux operating system
+with release configuration
+started at 10/27/26 22:21:29
+
+...reading external file 'oxic_t.pargp_data.csv'
+...header line: PARGPNME,INCTYP,DERINC,DERINCLB,FORCEN,DERINCMUL,DERMTHD,SPLITTHRESH,SPLITRELDIFF,SPLITACTION
+...read 3 lines from external file
+...reading external file 'oxic_t.par_data.csv'
+...header line: PARNME,PARTRANS,PARCHGLIM,PARVAL1,PARLBND,PARUBND,PARGP,SCALE,OFFSET,DERCOM
+...read 17 lines from external file
+...reading external file 'oxic_t.obs_data.csv'
+...header line: OBSNME,OBSVAL,WEIGHT,OBGNME
+...read 21 lines from external file
+...reading external file 'oxic_t.tplfile_data.csv'
+...header line: PEST_FILE,MODEL_FILE
+...read 2 lines from external file
+...reading external file 'oxic_t.insfile_data.csv'
+...header line: PEST_FILE,MODEL_FILE
+...read 2 lines from external file
+
+    This software has been approved for release by the
+    U.S.Geological Survey(USGS).Although the software has 
+    been subjected to rigorous review, the USGS reserves the
+    right to update the software as needed pursuant to further
+    analysisand review.No warranty, expressed or implied, is 
+    made by the USGS or the U.S.Government as to the
+    functionality of the softwareand related material nor shall
+    the fact of release constitute any such warranty.
+    Furthermore, the software is released on condition that
+    neither the USGS nor the U.S.Government shall be held
+    liable for any damages resulting from its authorized 
+    or unauthorized use.
+
+
+Case dimensions:- 
+    Number of parameters = 16
+    Number of adjustable parameters = 16
+    Number of observations = 20
+    Number of non-zero weighted observations = 20
+    Number of prior estimates = 0
+
+PEST Control Information
+    relparmax = 1
+    facparmax = 1.1
+    facorig = 0.001
+    phiredswh = 0.1
+    noptmax = 1
+    phiredstp = 0.01
+    nphistp = 3
+    nphinored = 3
+    relparstp = 0.01
+    nrelpar = 3
+
+
+    PEST++ OPTIONS: 
+
+...general options (used in multiple tools): 
+svd_pack: redsvd
+lambda_scale_fac: 0.75,1,
+forgive_unknown_args: 0
+max_run_fail: 3
+panther_poll_interval: 1
+parameter_covariance: 
+observation_covariance: 
+hotstart_resfile: 
+overdue_resched_fac: 1.15
+overdue_giveup_fac: 5
+overdue_giveup_minutes: 1e+30
+condor_submit_file: 
+tie_by_group: 0
+par_sigma_range: 4
+enforce_tied_bounds: 0
+debug_parse_only: 0
+check_tplins: 1
+fill_tpl_zeros: 0
+tpl_force_decimal: 0
+additional_ins_delimiters: 
+random_seed: 358183147
+num_tpl_ins_threads: 1
+save_binary: 0
+save_all_runs: 0
+save_dense: 0
+ensemble_output_precision: 20
+panther_echo: 1
+panther_agent_restart_on_error: 0
+panther_agent_no_ping_timeout_secs: -1
+panther_debug_loop: 0
+debug_check_par_en_consistency: 0
+panther_agent_freeze_on_fail: 0
+panther_transfer_on_finish: 
+panther_transfer_on_fail: 
+panther_timeout_milliseconds: -999
+panther_echo_interval_milliseconds: 1000
+panther_persistent_workers: 1
+
+...pestpp-glm specific options:
+max_n_super: 1000000
+super_eigthresh: 1e-06
+n_iter_base: 1000000
+n_iter_super: 0
+super_relparmax: 0.1
+max_super_frz_iter: 20
+max_reg_iter: 20
+lambdas: 0.1,1,10,100,1000,
+iteration_summary: 0
+der_forgive: 1
+uncertainty: 1
+forecasts: 
+base_jacobian: 
+glm_num_reals: 0
+jac_scale: 1
+glm_normal_form: DIAG
+glm_hp_lambdas:0
+glm_panther_lambdas0
+glm_debug_der_fail: 0
+glm_debug_lamb_fail: 0
+glm_debug_real_fail: 0
+glm_accept_mc_phi: 0
+glm_rebase_super: 0
+glm_iter_mc: 0
+glm_high_2nd_iter_phi: 0
+
+...pestpp-swp options:
+sweep_parameter_csv_file: 
+sweep_output_csv_file: sweep_out.csv
+sweep_chunk: 500
+sweep_forgive: 0
+sweep_base_run: 0
+sweep_include_regul_phi: 0
+
+...pestpp-opt options:
+opt_objective_function: 
+opt_coin_log: 1
+opt_skip_final: 0
+opt_std_weights: 0
+opt_stack_size: 0
+opt_par_stack: 
+opt_obs_stack: 
+opt_decision_variable_groups: 
+opt_external_variable_groups: 
+opt_constraint_groups: 
+opt_risk: 0.5
+opt_iter_derinc_fac: 1
+opt_direction: 1
+opt_iter_tol: 0.001
+opt_recalc_fosm_every: 1
+opt_chance_points: SINGLE
+opt_chance_schedule: 
+
+...pestpp-sqp options:
+sqp_dv_en: 
+sqp_obs_restart_en: 
+sqp_search_method: LINE
+sqp_solve_method: NULL
+sqp_cma_bound_handling: reject
+sqp_num_reals: -1
+sqp_num_refined_search_pts: 1
+sqp_subset_size: -10
+sqp_update_hessian: 1
+sqp_hessian_update_method: BFGS
+sqp_alpha_mults:
+  0.001
+  0.005
+  0.01
+  0.1
+  0.5
+  1
+sqp_filter_tol: 0.001
+sqp_working_set_tol: 0.1
+sqp_cma_c1: -1
+sqp_cma_cmu: -1
+sqp_cma_cc: -1
+sqp_cma_parent_num: -1
+sqp_cma_stepsize_control: 0
+sqp_cma_reinflation_factor: -1
+sqp_max_consec_infeas_ies: 3
+sqp_max_reinflation_cond_num: 500
+sqp_scale_down_factor: 1
+sqp_hess_max_cond_num: 1e+08
+sqp_save_cov_every: -1
+sqp_enforce_bounds: 0
+sqp_viol_pad: 0.0001
+sqp_reset_hessian_every: -1
+sqp_rescale_search_dir: 1
+sqp_seek_feas_max_iter: 3
+sqp_risk: 0.5
+sqp_powell_damping_factor: 0.2
+sqp_debug_hessian: 0
+sqp_debug_cmaes: 0
+sqp_debug_stosag_grad: 0
+sqp_use_ies_infeas: 0
+
+...pestpp-mou options:
+mou_generator: PSO
+mou_population_size: 100
+mou_dv_population_file: 
+mou_obs_population_restart_file: 
+mou_objectives: 
+mou_max_archive_size: 500
+mou_risk_objective: 0
+mou_verbose_level: 1
+mou_env_selector: NSGA
+mou_mating_selector: TOURNAMENT
+mou_crossover_prob: 0.75
+mou_mutation_prob: -999
+mou_de_f: 0.8
+mou_save_population_every: -1
+mou_pso_omega: 0.7
+mou_pso_inertia (IINER, FINERT, INITER): 
+ 0.7  0.4  0 
+mou_pso_social_const: 
+ 2
+mou_pso_cognitive: 
+ 2
+mou_pso_alpha: 1
+mou_pso_rramp: -500
+mou_pso_rfit: 2
+mou_pso_vmax_factor: 0.8
+mou_pso_dv_bound_handling: CLAMP
+mou_ppd_beta: 0.5
+mou_fit_gamma: 0.25
+mou_fit_epsilon: 0.05
+mou_population_schedule: 
+mou_simplex_reflections:10
+mou_simplex_factors: 
+ 0.5
+ 0.6
+ 0.7
+ 0.8
+mou_simplex_mutation: 0
+mou_use_multigen:0
+mou_shuffle_fixed_pars: 0
+mou_debug_dv_handling: 0
+
+...shared pestpp-ies/pestpp-da options:
+(note: 'da' args override 'ies' args when using pestpp-da)
+ies_parameter_ensemble: prior_base.csv
+ies_observation_ensemble: 
+ies_weights_ensemble: 
+ies_restart_parameter_ensemble: oxic_t.7.par.csv
+ies_restart_observation_ensemble: oxic_t.7.obs.csv
+ies_use_approximate_solution: 1
+ies_lambda_mults: 0.1,1,10,
+ies_initial_lambda: 1.78
+ies_use_approx: 1
+ies_subset_size: 4
+ies_reg_factor: 0
+ies_verbose_level: 1
+ies_use_prior_scaling: 0
+ies_num_reals: 301
+ies_bad_phi: 1.79769e+308
+ies_bad_phi_sigma: 2
+ies_include_base: 0
+ies_use_empirical_prior: 0
+ies_group_draws: 1
+ies_enforce_bounds: 1
+ies_localizer: 
+ies_accept_phi_fac: 1.05
+ies_lambda_inc_fac: 10
+ies_lambda_dec_fac: 0.75
+ies_save_lambda_ensembles: 0
+ies_subset_how: RANDOM
+ies_localize_how: PARAMETERS
+ies_num_threads: -1
+ies_debug_fail_subset: 0
+ies_debug_fail_remainder: 0
+ies_debug_bad_phi: 0
+ies_debug_upgrade_only: 0
+ies_debug_high_subset_phi: 0
+ies_debug_high_upgrade_phi: 0
+ies_csv_by_reals: 1
+ies_autoadaloc: 0
+ies_autoadaloc_sigma_dist: 1
+ies_enforce_chglim: 0
+ies_center_on: 
+ies_no_noise: 0
+ies_drop_conflicts: 0
+ies_save_rescov:0
+ies_pdc_sigma_distance: -1
+ies_use_mda: 0
+ies_mda_init_fac: 10
+ies_mda_dec_fac: 0.5
+ies_localization_type: LOCAL
+ies_upgrades_in_memory: 1
+ies_ordered_binary: 1
+ies_multimodal_alpha: 0
+ies_multimodal_weight_exponent: 0
+ies_multimodal_phi_weight: 0.5
+ies_localizer_forgive_extra: 0
+ies_phi_factors_file: 
+ies_phi_factors_by_real: 0
+ies_n_iter_reinflate: 
+0,
+ies_reinflate_factor: 
+1,
+ies_updatebyreals: 0
+ies_autoadaloc_indicator_pars: 
+
+ies_run_realname: ies_reinflate_num_reals: 
+0,ies_use_phi_lambda_iters: 0
+
+pestpp-sen options: 
+gsa_method: MORRIS
+gsa_morris_pooled_obs: 0
+gsa_morris_obs_sen: 1
+gsa_morris_p: 4
+gsa_morris_r: 4
+gsa_morris_delta: 0.6666
+gsa_sobol_samples: 4
+gsa_sobol_par_dist: norm
+
+pestpp-da options (those not shared with pestpp-ies):
+da_parameter_cycle_table: 
+da_observation_cycle_table: 
+da_hotstart_cycle: 0
+da_stop_cycle: 1000000000
+da_use_simulated_states: 1
+da_noptmax_schedule: 
+
+
+
+Model command line(s):- 
+    python3 forward_run.py
+
+Model interface files:-
+    template files:
+      ./params.dat.tpl
+    model input files:
+      ./params.dat
+
+    instruction files:
+      ./sim.dat.ins
+    model output files:
+      ./sim.dat
+
+
+Parameter group information
+NAME          INCREMENT TYPE     DERIVATIVE INCREMENT    INCREMENT LOWER BOUND  FORCE CENTRAL     INCREMENT MULTIPLIER
+antibiotics         RELATIVE                     0.01                        0         SWITCH                        2
+geochem             RELATIVE                     0.01                        0         SWITCH                        2
+
+
+
+Parameter information
+NAME         TRANSFORMATION        CHANGE LIMIT  INITIAL VALUE    LOWER BOUND    UPPER BOUND        GROUP          SCALE         OFFSET  DERIVATIVE COMMAND
+k1           log                     FACTOR           0.01         0.0001              1      geochem              1              0                   1
+k10          log                     FACTOR          5e+21          5e+18          5e+24  antibiotics              1              0                   1
+k11          log                     FACTOR            990            9.9          99000  antibiotics              1              0                   1
+k12          log                     FACTOR         120000           1200        1.2e+07  antibiotics              1              0                   1
+k13          log                     FACTOR            4.4          0.044            440  antibiotics              1              0                   1
+k14          log                     FACTOR            0.9          0.009             90  antibiotics              1              0                   1
+k15          log                     FACTOR          14300            143       1.43e+06  antibiotics              1              0                   1
+k16          log                     FACTOR           0.01         0.0001              1  antibiotics              1              0                   1
+k2           log                     FACTOR          1e-05          1e-07          0.001      geochem              1              0                   1
+k3           log                     FACTOR           6600             66         660000      geochem              1              0                   1
+k4           log                     FACTOR             22           0.22           2200      geochem              1              0                   1
+k5           log                     FACTOR           1200             12         120000      geochem              1              0                   1
+k8           log                     FACTOR          0.002          2e-05            0.2  antibiotics              1              0                   1
+k9           log                     FACTOR          9e+30          9e+27          9e+33  antibiotics              1              0                   1
+kl2_ch2o     log                     FACTOR       1.65e-05       1.65e-07        0.00165  antibiotics              1              0                   1
+kl_ch2o      log                     FACTOR     5.2596e-06     5.2596e-08     0.00052596  antibiotics              1              0                   1
+
+
+
+Observation information
+NAME                                VALUE                GROUP              WEIGHT
+ammet_t14                     1.73955e-10                ammet         6.03495e+09
+ammet_t2                      2.18217e-10                ammet         5.33563e+09
+ammet_t28                     5.69381e-10                ammet         5.33716e+09
+ammet_t70                     3.26656e-09                ammet         2.46548e+09
+des_t14                       3.04255e-10                  des          2.1378e+09
+des_t2                        8.98491e-09                  des           3.731e+08
+des_t28                       6.95625e-10                  des         1.68117e+09
+des_t70                        2.4541e-09                  des         1.77449e+09
+nit_t14                       5.10224e-12                  nit         1.08122e+11
+nit_t2                        8.36995e-12                  nit         2.98005e+11
+nit_t28                       1.59062e-11                  nit         1.65283e+11
+nit_t70                       5.35961e-11                  nit         4.53471e+10
+smx_t14                       3.19014e-08                  smx         2.79802e+08
+smx_t2                        5.04197e-09                  smx          2.6325e+08
+smx_t28                       2.47316e-08                  smx           3.299e+08
+smx_t70                       2.35761e-08                  smx         3.07463e+08
+undet_t14                     7.09731e-09                undet         6.79864e+08
+undet_t2                      2.52285e-08                undet         1.96989e+08
+undet_t28                     1.34695e-08                undet         4.94747e+08
+undet_t70                     1.01316e-08                undet         4.39353e+08
+
+
+
+Prior information
+
+   no prior information provided
+
+
+
+PEST SVD Information
+    maxsing = 10000000
+    eigthresh = 1e-06
+
+
+
+
+
+...resetting max_run_fail to 1
+...resetting overdue_resched_fac to 1.15
+
+  ---  initializing  ---  
+...using glm algorithm
+...using REDSVD for truncated svd solve
+...maxsing: 10000000
+...eigthresh:  1e-06
+...initializing localizer
+...not using localization
+...using lambda multipliers: 0.1 , 1 , 10 , 
+...using lambda scaling factors: 0.75 , 1 , 
+...acceptable phi factor:  1.05
+...lambda increase factor:  10
+...lambda decrease factor:  0.75
+...max run fail:  1
+...initializing prior parameter covariance matrix
+...parcov loaded  from parameter bounds, using par_sigma_range 4
+...initializing observation noise covariance matrix
+...obscov loaded  from observation weights
+...loading par ensemble from csv file prior_base.csv
+...Warning: even though ies_enforce_bounds is true, a restart obs en was passed, so bounds will not be enforced on the initial par en
+...not using prior parameter covariance matrix scaling
+
+  ---  NOTE: no obs-noise-specific options have been passed, resetting to `ies_no_noise` to true  ---  
+...initializing no-noise observation ensemble of :  301
+...setting weights ensemble from control file weights
+...saved weight ensemble to  oxic_T.weights.csv
+checking for denormal values in weights ensemble
+checking for denormal values in pe
+...saved initial parameter ensemble to  oxic_T.0.par.csv
+checking for denormal values in obs + noise ensemble
+...saved obs+noise observation ensemble (obsval + noise realizations) to  oxic_T.obs+noise.csv
+...using subset in lambda testing, number of realizations used in subset testing:  4
+...subset how:  RANDOM
+...restarting with existing obs ensemble oxic_t.7.obs.csv
+...loading restart obs ensemble from csv file oxic_t.7.obs.csv
+...loading restart par ensemble from csv file oxic_t.7.par.csv
+...WARNING: replacing obs+noise obs en realization '300' with 'base' (noise free) values to match par en 'base' location
+...re-saved obs+noise observation ensemble (obsval+noise) to  oxic_T.obs+noise.csv
+...WARNING: replacing weight realization '300' with 'base' weight values to match par en 'base' location
+...re-saved weight ensemble to  oxic_T.weights.csv
+reordering oe_base to align with restart obs en,num reals: 236
+reinflation is active, not reordering oe_base or weight ensembles
+reinflation is active, not reordering pe_base ensemble
+...centering on ensemble mean vector
+...saved initial obs ensemble to oxic_T.0.obs.csv
+
+  ---  pre-drop initial phi summary  ---  
+       phi type           mean            std            min            max
+         actual        62.4904        17.1184        40.6648        118.442
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          0      23.3      7.71      15.9      68.3      38.1      8.88
+ammet       4          2      12.3      4.89      4.45      50.2      20.5      6.81
+des         4          0      10.5      7.84     0.664      36.8        16      9.83
+smx         4          0      10.4      6.83      2.25      47.3      16.2      6.94
+nit         4          0      5.94      4.61    0.0943      29.6      9.16      6.08
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...checking for prior-data conflict
+
+  ---  WARNING: 2 non-zero weighted observations are in conflict with the prior simulated ensemble.
+  ---  
+...see oxic_T.0.pdc.csv for listing of conflicted observations
+
+...  WARNING: Prior-data conflict detected.  Continuing with IES parameter
+           adjustment will likely result in parameter and forecast bias.
+
+...not dropping any realizations during initialization b/c restart obs and restart par ensembles passed
+...saved adjusted weight ensemble to  oxic_T.adjusted.weights.csv
+
+  ---  initial phi summary  ---  
+       phi type           mean            std            min            max
+         actual        62.4904        17.1184        40.6648        118.442
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          0      23.3      7.71      15.9      68.3      38.1      8.88
+ammet       4          2      12.3      4.89      4.45      50.2      20.5      6.81
+des         4          0      10.5      7.84     0.664      36.8        16      9.83
+smx         4          0      10.4      6.83      2.25      47.3      16.2      6.94
+nit         4          0      5.94      4.61    0.0943      29.6      9.16      6.08
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...current lambda: 1.78
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+antibiotics    11     19.33    37.66         11     0.4237         19     0.7319           0
+geochem         5     14.11    39.09          5     0.4237          4      0.339           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+
+  ---  initialization complete  ---  
+
+  ---  starting solve for iteration: 1  ---  
+...current lambda:  1.78
+...starting calcs for glm factor 0.178
+see .log file for more details
+...finished calcs for: 0.178
+...starting calcs for glm factor 1.78
+see .log file for more details
+...finished calcs for: 1.78
+...starting calcs for glm factor 17.8
+see .log file for more details
+...finished calcs for: 17.8
+
+  ---  running upgrade ensembles  ---  
+...3 inflation factors (lambdas) times 2 backtracking factors
+   times 4 realizations yields 24 model runs for upgrade testing
+...subset idx:pe real name:  173:217, 193:245, 216:276, 235:BASE, 
+...subset idx:oe real name:  173:217, 193:245, 216:276, 235:BASE, 
+
+  ---  evaluating upgrade ensembles  ---  
+...last mean:  62.4904
+...last stdev:  17.1184
+...bad_phi_sigma 2 and mean 50.0079 yields bad phi threshold of 64.0305
+
+  ---  phi summary for lambda, scale fac:0.178 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        50.0079        7.01129        42.6941        57.5689
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3      19.8      1.71      18.5      22.2      39.9      3.04
+ammet       4          4        11      1.05      9.58        12      22.4      3.87
+smx         4          4      8.26      2.32       4.8       9.8      17.1      6.26
+des         4          2      6.67      5.93      2.71      15.4      12.8      10.5
+nit         4          2      4.24      6.06      0.21      13.2       7.8      10.3
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 49.8032 yields bad phi threshold of 63.8472
+
+  ---  phi summary for lambda, scale fac:0.178 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        49.8032        7.02196        43.0778        58.2559
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3      19.5      1.51      18.3      21.5      39.3      2.66
+ammet       4          4      11.1     0.946      9.78        12      22.5      3.55
+smx         4          4      8.48      2.47      4.79      9.94      17.7      6.69
+des         4          2      6.47      4.96      3.09      13.7      12.6      8.99
+nit         4          3      4.34      6.85       0.1      14.6      7.81      11.6
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 49.3553 yields bad phi threshold of 62.1659
+
+  ---  phi summary for lambda, scale fac:1.78 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        49.3553         6.4053        42.0842        54.9706
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3        20      1.78      18.7      22.6      40.9      3.62
+ammet       4          4        11      1.11      9.39      11.8      22.5      4.13
+smx         4          4      7.79      1.78      5.15      8.96      16.2      4.77
+des         4          2      6.66       6.5      2.61      16.3      12.8      11.3
+nit         4          2      3.91      4.46     0.527      10.3      7.66      8.03
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 48.6584 yields bad phi threshold of 60.8967
+
+  ---  phi summary for lambda, scale fac:1.78 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        48.6584        6.11915        41.9248         54.515
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3      19.8      1.67      18.5      22.1        41      2.94
+ammet       4          4        11      1.04      9.49      11.8      22.8       3.9
+smx         4          4      7.75      1.76      5.13      8.78      16.3      4.82
+des         4          3      6.33      5.56      2.76      14.6      12.5        10
+nit         4          2      3.81      4.76     0.355      10.8      7.44      8.55
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 50.7965 yields bad phi threshold of 65.0069
+
+  ---  phi summary for lambda, scale fac:17.8 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        50.7965        7.10523        42.5284        58.8176
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3      20.5      1.95      19.1      23.4      40.8      5.11
+ammet       4          4      10.9      1.24       9.2      11.8        22      4.54
+smx         4          4      7.88      1.74      5.35      9.17      15.8      4.37
+des         4          2      7.25      8.28      2.41      19.6      13.1      13.5
+nit         4          2       4.2      3.74      1.07      9.13      8.22      6.92
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 50.5617 yields bad phi threshold of 64.5273
+
+  ---  phi summary for lambda, scale fac:17.8 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        50.5617        6.98282         42.452        58.3848
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          3      20.5      1.92      19.1      23.3      40.9      4.95
+ammet       4          4      10.9      1.22      9.21      11.8      22.1       4.5
+smx         4          4      7.85      1.71      5.36      9.08      15.8      4.31
+des         4          2      7.17      8.06      2.45      19.2      13.1      13.2
+nit         4          2      4.14      3.73      1.03      9.11      8.14      6.91
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+  ---  phi summary for best lambda, scale fac: 1.78 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        48.6584        6.11915        41.9248         54.515
+
+
+
+  ---  running remaining realizations for best lambda, scale:1.78 , 1 ,   ---  
+...bad_phi_sigma 2 and mean 56.5859 yields bad phi threshold of 94.3398
+
+  ---  dropping realizations as bad:  9  ---  
+...dropping par:obs realizations: 116 : 116 , 128 : 128 , 146 : 146 , 186 : 186 , 192 : 192 , 196 : 196 , 202 : 202 , 205 : 205 , 285 : 285 , 
+...phi summary for entire ensemble using lambda,scale_fac 1.78 , 1 , 
+       phi type           mean            std            min            max
+         actual        53.8778        12.1396        40.1269        93.3748
+
+
+...last best mean phi * acceptable phi factor:  65.6149
+...current best mean phi:  53.8778
+
+  ---  updating parameter ensemble  ---  
+
+  ---  updating lambda to  1.335  ---  
+
+  ---  EnsembleMethod iteration 1 report  ---  
+   number of active realizations:  227
+   number of model runs:           256
+      current obs ensemble saved to oxic_T.1.obs.csv
+      current par ensemble saved to oxic_T.1.par.csv
+       phi type           mean            std            min            max
+         actual        53.8778        12.1396        40.1269        93.3748
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+undet       4          1      21.1      5.03      15.9      56.8      39.9      7.24
+ammet       4          1      12.1      3.69      5.98      43.1      23.1      5.98
+smx         4          2       8.7      4.38       2.6      38.9      16.1      5.43
+des         4          0      7.74      5.75     0.714      29.7      13.6      7.96
+nit         4          0      4.23      3.97    0.0287      24.5      7.34       5.7
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+antibiotics    11     22.46    40.14          8     0.3204         22     0.8811           0
+geochem         5     14.16    43.98          2     0.1762          0          0           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+...saved parameter change summary to oxic_T.1.pcs.csv
+
+  ---  phi-based termination criteria check  ---  
+...phiredstp:  0.01
+...nphistp:  3
+...nphinored (also used for consecutive bad lambda cycles):  3
+...best mean phi sequence: 62.4904 , 53.8778 , 
+...best phi yet:  53.8778
+...number of consecutive bad lambda testing cycles:  0
+...number of iterations satisfying phiredstp criteria:  1
+...number of iterations since best yet mean phi:  0
+...solution iterations >= noptmax, all done
+
+
+pestpp-ies analysis complete...
+started at 10/27/26 22:21:29
+finished at 10/27/26 22:33:18
+took 11.8167 minutes

@@ -1,0 +1,29 @@
+pcf version=2
+* control data keyword
+pestmode                                 estimation
+noptmax                                 8
+svdmode                                 1
+maxsing                          10000000
+eigthresh                           1e-06
+eigwrite                                1
+ies_num_reals                  100
+ies_parameter_ensemble         prior.jcb
+ies_add_base                   true
+ies_lambda_mults               0.1,1.0,10.0
+lambda_scale_fac               0.75,1.0
+ies_subset_size                4
+ies_bad_phi_sigma              2.0
+par_sigma_range                4
+overdue_giveup_fac             5
+* parameter groups external
+oxich_no_nitr.pargp_data.csv
+* parameter data external
+oxich_no_nitr.par_data.csv
+* observation data external
+oxich_no_nitr.obs_data.csv
+* model command line
+python3 forward_run.py
+* model input external
+oxich_no_nitr.tplfile_data.csv
+* model output external
+oxich_no_nitr.insfile_data.csv

@@ -1,0 +1,1377 @@
+             pestpp-ies - a GLM iterative Ensemble Smoother
+                      for PEST(++) datasets 
+
+                 by the PEST++ development team
+
+
+
+
+
+version: 5.2.29
+binary compiled on Oct 22 2026 at 18:58:22
+using control file: "anoxic_H.pst"
+in directory: "calibration/<set-up>/anoxic_H/master"
+on host: "vm"
+on a(n) linux operating system
+with release configuration
+started at 10/28/26 15:51:36
+
+...reading external file 'anoxic_h.pargp_data.csv'
+...header line: PARGPNME,INCTYP,DERINC,DERINCLB,FORCEN,DERINCMUL,DERMTHD,SPLITTHRESH,SPLITRELDIFF,SPLITACTION
+...read 3 lines from external file
+...reading external file 'anoxic_h.par_data.csv'
+...header line: PARNME,PARTRANS,PARCHGLIM,PARVAL1,PARLBND,PARUBND,PARGP,SCALE,OFFSET,DERCOM
+...read 17 lines from external file
+...reading external file 'anoxic_h.obs_data.csv'
+...header line: OBSNME,OBSVAL,WEIGHT,OBGNME
+...read 22 lines from external file
+...reading external file 'anoxic_h.tplfile_data.csv'
+...header line: PEST_FILE,MODEL_FILE
+...read 2 lines from external file
+...reading external file 'anoxic_h.insfile_data.csv'
+...header line: PEST_FILE,MODEL_FILE
+...read 2 lines from external file
+
+    This software has been approved for release by the
+    U.S.Geological Survey(USGS).Although the software has 
+    been subjected to rigorous review, the USGS reserves the
+    right to update the software as needed pursuant to further
+    analysisand review.No warranty, expressed or implied, is 
+    made by the USGS or the U.S.Government as to the
+    functionality of the softwareand related material nor shall
+    the fact of release constitute any such warranty.
+    Furthermore, the software is released on condition that
+    neither the USGS nor the U.S.Government shall be held
+    liable for any damages resulting from its authorized 
+    or unauthorized use.
+
+
+Case dimensions:- 
+    Number of parameters = 16
+    Number of adjustable parameters = 16
+    Number of observations = 21
+    Number of non-zero weighted observations = 19
+    Number of prior estimates = 0
+
+PEST Control Information
+    relparmax = 1
+    facparmax = 1.1
+    facorig = 0.001
+    phiredswh = 0.1
+    noptmax = 4
+    phiredstp = 0.01
+    nphistp = 3
+    nphinored = 3
+    relparstp = 0.01
+    nrelpar = 3
+
+
+    PEST++ OPTIONS: 
+
+...general options (used in multiple tools): 
+svd_pack: redsvd
+lambda_scale_fac: 0.75,1,
+forgive_unknown_args: 0
+max_run_fail: 3
+panther_poll_interval: 1
+parameter_covariance: 
+observation_covariance: 
+hotstart_resfile: 
+overdue_resched_fac: 1.15
+overdue_giveup_fac: 5
+overdue_giveup_minutes: 1e+30
+condor_submit_file: 
+tie_by_group: 0
+par_sigma_range: 4
+enforce_tied_bounds: 0
+debug_parse_only: 0
+check_tplins: 1
+fill_tpl_zeros: 0
+tpl_force_decimal: 0
+additional_ins_delimiters: 
+random_seed: 358183147
+num_tpl_ins_threads: 1
+save_binary: 0
+save_all_runs: 0
+save_dense: 0
+ensemble_output_precision: 20
+panther_echo: 1
+panther_agent_restart_on_error: 0
+panther_agent_no_ping_timeout_secs: -1
+panther_debug_loop: 0
+debug_check_par_en_consistency: 0
+panther_agent_freeze_on_fail: 0
+panther_transfer_on_finish: 
+panther_transfer_on_fail: 
+panther_timeout_milliseconds: -999
+panther_echo_interval_milliseconds: 1000
+panther_persistent_workers: 1
+
+...pestpp-glm specific options:
+max_n_super: 1000000
+super_eigthresh: 1e-06
+n_iter_base: 1000000
+n_iter_super: 0
+super_relparmax: 0.1
+max_super_frz_iter: 20
+max_reg_iter: 20
+lambdas: 0.1,1,10,100,1000,
+iteration_summary: 0
+der_forgive: 1
+uncertainty: 1
+forecasts: 
+base_jacobian: 
+glm_num_reals: 0
+jac_scale: 1
+glm_normal_form: DIAG
+glm_hp_lambdas:0
+glm_panther_lambdas0
+glm_debug_der_fail: 0
+glm_debug_lamb_fail: 0
+glm_debug_real_fail: 0
+glm_accept_mc_phi: 0
+glm_rebase_super: 0
+glm_iter_mc: 0
+glm_high_2nd_iter_phi: 0
+
+...pestpp-swp options:
+sweep_parameter_csv_file: 
+sweep_output_csv_file: sweep_out.csv
+sweep_chunk: 500
+sweep_forgive: 0
+sweep_base_run: 0
+sweep_include_regul_phi: 0
+
+...pestpp-opt options:
+opt_objective_function: 
+opt_coin_log: 1
+opt_skip_final: 0
+opt_std_weights: 0
+opt_stack_size: 0
+opt_par_stack: 
+opt_obs_stack: 
+opt_decision_variable_groups: 
+opt_external_variable_groups: 
+opt_constraint_groups: 
+opt_risk: 0.5
+opt_iter_derinc_fac: 1
+opt_direction: 1
+opt_iter_tol: 0.001
+opt_recalc_fosm_every: 1
+opt_chance_points: SINGLE
+opt_chance_schedule: 
+
+...pestpp-sqp options:
+sqp_dv_en: 
+sqp_obs_restart_en: 
+sqp_search_method: LINE
+sqp_solve_method: NULL
+sqp_cma_bound_handling: reject
+sqp_num_reals: -1
+sqp_num_refined_search_pts: 1
+sqp_subset_size: -10
+sqp_update_hessian: 1
+sqp_hessian_update_method: BFGS
+sqp_alpha_mults:
+  0.001
+  0.005
+  0.01
+  0.1
+  0.5
+  1
+sqp_filter_tol: 0.001
+sqp_working_set_tol: 0.1
+sqp_cma_c1: -1
+sqp_cma_cmu: -1
+sqp_cma_cc: -1
+sqp_cma_parent_num: -1
+sqp_cma_stepsize_control: 0
+sqp_cma_reinflation_factor: -1
+sqp_max_consec_infeas_ies: 3
+sqp_max_reinflation_cond_num: 500
+sqp_scale_down_factor: 1
+sqp_hess_max_cond_num: 1e+08
+sqp_save_cov_every: -1
+sqp_enforce_bounds: 0
+sqp_viol_pad: 0.0001
+sqp_reset_hessian_every: -1
+sqp_rescale_search_dir: 1
+sqp_seek_feas_max_iter: 3
+sqp_risk: 0.5
+sqp_powell_damping_factor: 0.2
+sqp_debug_hessian: 0
+sqp_debug_cmaes: 0
+sqp_debug_stosag_grad: 0
+sqp_use_ies_infeas: 0
+
+...pestpp-mou options:
+mou_generator: PSO
+mou_population_size: 100
+mou_dv_population_file: 
+mou_obs_population_restart_file: 
+mou_objectives: 
+mou_max_archive_size: 500
+mou_risk_objective: 0
+mou_verbose_level: 1
+mou_env_selector: NSGA
+mou_mating_selector: TOURNAMENT
+mou_crossover_prob: 0.75
+mou_mutation_prob: -999
+mou_de_f: 0.8
+mou_save_population_every: -1
+mou_pso_omega: 0.7
+mou_pso_inertia (IINER, FINERT, INITER): 
+ 0.7  0.4  0 
+mou_pso_social_const: 
+ 2
+mou_pso_cognitive: 
+ 2
+mou_pso_alpha: 1
+mou_pso_rramp: -500
+mou_pso_rfit: 2
+mou_pso_vmax_factor: 0.8
+mou_pso_dv_bound_handling: CLAMP
+mou_ppd_beta: 0.5
+mou_fit_gamma: 0.25
+mou_fit_epsilon: 0.05
+mou_population_schedule: 
+mou_simplex_reflections:10
+mou_simplex_factors: 
+ 0.5
+ 0.6
+ 0.7
+ 0.8
+mou_simplex_mutation: 0
+mou_use_multigen:0
+mou_shuffle_fixed_pars: 0
+mou_debug_dv_handling: 0
+
+...shared pestpp-ies/pestpp-da options:
+(note: 'da' args override 'ies' args when using pestpp-da)
+ies_parameter_ensemble: prior_base.csv
+ies_observation_ensemble: 
+ies_weights_ensemble: 
+ies_restart_parameter_ensemble: anoxic_h.8.par.csv
+ies_restart_observation_ensemble: anoxic_h.8.obs.csv
+ies_use_approximate_solution: 1
+ies_lambda_mults: 0.1,1,10,
+ies_initial_lambda: 13.3484
+ies_use_approx: 1
+ies_subset_size: 4
+ies_reg_factor: 0
+ies_verbose_level: 1
+ies_use_prior_scaling: 0
+ies_num_reals: 101
+ies_bad_phi: 1.79769e+308
+ies_bad_phi_sigma: 2
+ies_include_base: 0
+ies_use_empirical_prior: 0
+ies_group_draws: 1
+ies_enforce_bounds: 1
+ies_localizer: 
+ies_accept_phi_fac: 1.05
+ies_lambda_inc_fac: 10
+ies_lambda_dec_fac: 0.75
+ies_save_lambda_ensembles: 0
+ies_subset_how: RANDOM
+ies_localize_how: PARAMETERS
+ies_num_threads: -1
+ies_debug_fail_subset: 0
+ies_debug_fail_remainder: 0
+ies_debug_bad_phi: 0
+ies_debug_upgrade_only: 0
+ies_debug_high_subset_phi: 0
+ies_debug_high_upgrade_phi: 0
+ies_csv_by_reals: 1
+ies_autoadaloc: 0
+ies_autoadaloc_sigma_dist: 1
+ies_enforce_chglim: 0
+ies_center_on: 
+ies_no_noise: 0
+ies_drop_conflicts: 0
+ies_save_rescov:0
+ies_pdc_sigma_distance: -1
+ies_use_mda: 0
+ies_mda_init_fac: 10
+ies_mda_dec_fac: 0.5
+ies_localization_type: LOCAL
+ies_upgrades_in_memory: 1
+ies_ordered_binary: 1
+ies_multimodal_alpha: 0
+ies_multimodal_weight_exponent: 0
+ies_multimodal_phi_weight: 0.5
+ies_localizer_forgive_extra: 0
+ies_phi_factors_file: 
+ies_phi_factors_by_real: 0
+ies_n_iter_reinflate: 
+0,
+ies_reinflate_factor: 
+1,
+ies_updatebyreals: 0
+ies_autoadaloc_indicator_pars: 
+
+ies_run_realname: ies_reinflate_num_reals: 
+0,ies_use_phi_lambda_iters: 0
+
+pestpp-sen options: 
+gsa_method: MORRIS
+gsa_morris_pooled_obs: 0
+gsa_morris_obs_sen: 1
+gsa_morris_p: 4
+gsa_morris_r: 4
+gsa_morris_delta: 0.6666
+gsa_sobol_samples: 4
+gsa_sobol_par_dist: norm
+
+pestpp-da options (those not shared with pestpp-ies):
+da_parameter_cycle_table: 
+da_observation_cycle_table: 
+da_hotstart_cycle: 0
+da_stop_cycle: 1000000000
+da_use_simulated_states: 1
+da_noptmax_schedule: 
+
+
+
+Model command line(s):- 
+    python3 forward_run.py
+
+Model interface files:-
+    template files:
+      ./params.dat.tpl
+    model input files:
+      ./params.dat
+
+    instruction files:
+      ./sim.dat.ins
+    model output files:
+      ./sim.dat
+
+
+Parameter group information
+NAME          INCREMENT TYPE     DERIVATIVE INCREMENT    INCREMENT LOWER BOUND  FORCE CENTRAL     INCREMENT MULTIPLIER
+antibiotics         RELATIVE                     0.01                        0         SWITCH                        2
+geochem             RELATIVE                     0.01                        0         SWITCH                        2
+
+
+
+Parameter information
+NAME         TRANSFORMATION        CHANGE LIMIT  INITIAL VALUE    LOWER BOUND    UPPER BOUND        GROUP          SCALE         OFFSET  DERIVATIVE COMMAND
+k1           log                     FACTOR           0.03         0.0003              3      geochem              1              0                   1
+k10          log                     FACTOR        1.5e+18        1.5e+15        1.5e+21  antibiotics              1              0                   1
+k11          log                     FACTOR           5000             50         500000  antibiotics              1              0                   1
+k12          log                     FACTOR         120000           1200        1.2e+07  antibiotics              1              0                   1
+k13          log                     FACTOR              8           0.08            800  antibiotics              1              0                   1
+k14          log                     FACTOR            0.5          0.005             50  antibiotics              1              0                   1
+k15          log                     FACTOR         200000           2000          2e+07  antibiotics              1              0                   1
+k16          log                     FACTOR              8           0.08            800  antibiotics              1              0                   1
+k2           log                     FACTOR         0.0002          2e-06           0.02      geochem              1              0                   1
+k6           log                     FACTOR           2500             25         250000      geochem              1              0                   1
+k7           log                     FACTOR           4000             40         400000      geochem              1              0                   1
+k8           log                     FACTOR          0.004          4e-05            0.4  antibiotics              1              0                   1
+k9           log                     FACTOR          2e+26          2e+23          2e+29  antibiotics              1              0                   1
+kl2_ch2o     log                     FACTOR        1.5e-05        1.5e-07         0.0015  antibiotics              1              0                   1
+kl_ch2o      log                     FACTOR     1.6315e-07     1.6315e-09     1.6315e-05  antibiotics              1              0                   1
+kl_no3       log                     FACTOR         0.0015        1.5e-05           0.15      geochem              1              0                   1
+
+
+
+Observation information
+NAME                                VALUE                GROUP              WEIGHT
+ammet_t14                     5.45225e-11                ammet         4.08388e+10
+ammet_t2                      4.77436e-10                ammet         5.80175e+09
+ammet_t28                     2.24261e-10                ammet         1.24263e+10
+des_t14                       7.52425e-10                  des         1.21204e+09
+des_t2                        7.64912e-09                  des         3.61254e+08
+des_t28                       1.49696e-10                  des         2.58222e+09
+nh4_t15                       5.90576e-05                  nh4                   0
+nh4_t28                       3.71896e-05                  nh4                   0
+nit_t14                       1.85323e-11                  nit         3.41385e+10
+nit_t2                        9.67975e-11                  nit         5.91324e+09
+nit_t28                       2.47123e-11                  nit         1.84017e+11
+no2_t15                       2.80883e-05                  no2             26074.8
+no2_t28                        3.9161e-05                  no2              228398
+no3_t15                       1.66567e-05                  no3             48645.1
+no3_t28                       4.29643e-06                  no3         1.06709e+06
+smx_t14                       3.59802e-08                  smx         1.82721e+08
+smx_t2                        4.64944e-09                  smx         3.41097e+08
+smx_t28                       2.92456e-08                  smx         1.42488e+08
+undet_t14                      2.6763e-09                undet         2.48907e+08
+undet_t2                      2.66092e-08                undet         2.18325e+08
+undet_t28                      9.8377e-09                undet         1.57697e+08
+
+
+
+Prior information
+
+   no prior information provided
+
+
+
+PEST SVD Information
+    maxsing = 10000000
+    eigthresh = 1e-06
+
+
+
+
+
+...resetting max_run_fail to 1
+...resetting overdue_resched_fac to 1.15
+
+  ---  initializing  ---  
+...using glm algorithm
+...using REDSVD for truncated svd solve
+...maxsing: 10000000
+...eigthresh:  1e-06
+...initializing localizer
+...not using localization
+...using lambda multipliers: 0.1 , 1 , 10 , 
+...using lambda scaling factors: 0.75 , 1 , 
+...acceptable phi factor:  1.05
+...lambda increase factor:  10
+...lambda decrease factor:  0.75
+...max run fail:  1
+...initializing prior parameter covariance matrix
+...parcov loaded  from parameter bounds, using par_sigma_range 4
+...initializing observation noise covariance matrix
+WARNING: Cov::try_from(): 2 extra elements in covariance matrix being drop - these are probably for fixed parameters and/or zero-weight observations
+
+...obscov loaded  from observation weights
+...loading par ensemble from csv file prior_base.csv
+...Warning: even though ies_enforce_bounds is true, a restart obs en was passed, so bounds will not be enforced on the initial par en
+...not using prior parameter covariance matrix scaling
+
+  ---  NOTE: no obs-noise-specific options have been passed, resetting to `ies_no_noise` to true  ---  
+...initializing no-noise observation ensemble of :  101
+...setting weights ensemble from control file weights
+...saved weight ensemble to  anoxic_H.weights.csv
+checking for denormal values in weights ensemble
+checking for denormal values in pe
+...saved initial parameter ensemble to  anoxic_H.0.par.csv
+checking for denormal values in obs + noise ensemble
+...saved obs+noise observation ensemble (obsval + noise realizations) to  anoxic_H.obs+noise.csv
+...using subset in lambda testing, number of realizations used in subset testing:  4
+...subset how:  RANDOM
+...restarting with existing obs ensemble anoxic_h.8.obs.csv
+...loading restart obs ensemble from csv file anoxic_h.8.obs.csv
+...loading restart par ensemble from csv file anoxic_h.8.par.csv
+...WARNING: replacing obs+noise obs en realization '100' with 'base' (noise free) values to match par en 'base' location
+...re-saved obs+noise observation ensemble (obsval+noise) to  anoxic_H.obs+noise.csv
+...WARNING: replacing weight realization '100' with 'base' weight values to match par en 'base' location
+...re-saved weight ensemble to  anoxic_H.weights.csv
+reordering oe_base to align with restart obs en,num reals: 59
+reinflation is active, not reordering oe_base or weight ensembles
+reinflation is active, not reordering pe_base ensemble
+...centering on ensemble mean vector
+...saved initial obs ensemble to anoxic_H.0.obs.csv
+
+  ---  pre-drop initial phi summary  ---  
+       phi type           mean            std            min            max
+         actual        74.9406         15.165        52.5843        117.473
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          2        16      6.97      7.94      40.5      21.1      6.39
+no3         2          1        14      4.83      8.81      28.6      18.6      4.63
+nit         3          2      11.8      5.77      2.13      21.3      15.7      7.13
+ammet       3          2      11.4      3.23      8.51      20.2      15.7      4.99
+des         3          0       8.3      3.33      2.13      18.5      11.2      4.03
+undet       3          1      6.94      3.97      2.36      19.4      8.99      4.13
+no2         2          1      6.49      4.01      1.56      22.8      8.64      4.51
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...checking for prior-data conflict
+
+  ---  WARNING: 9 non-zero weighted observations are in conflict with the prior simulated ensemble.
+  ---  
+...see anoxic_H.0.pdc.csv for listing of conflicted observations
+
+...  WARNING: Prior-data conflict detected.  Continuing with IES parameter
+           adjustment will likely result in parameter and forecast bias.
+
+...not dropping any realizations during initialization b/c restart obs and restart par ensembles passed
+...saved adjusted weight ensemble to  anoxic_H.adjusted.weights.csv
+
+  ---  initial phi summary  ---  
+       phi type           mean            std            min            max
+         actual        74.9406         15.165        52.5843        117.473
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          2        16      6.97      7.94      40.5      21.1      6.39
+no3         2          1        14      4.83      8.81      28.6      18.6      4.63
+nit         3          2      11.8      5.77      2.13      21.3      15.7      7.13
+ammet       3          2      11.4      3.23      8.51      20.2      15.7      4.99
+des         3          0       8.3      3.33      2.13      18.5      11.2      4.03
+undet       3          1      6.94      3.97      2.36      19.4      8.99      4.13
+no2         2          1      6.49      4.01      1.56      22.8      8.64      4.51
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...current lambda: 13.3484
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+geochem         5      12.3    55.28          1      0.339          0          0           1
+antibiotics    11     36.86    33.24          1     0.1541          1     0.1541           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+
+  ---  initialization complete  ---  
+
+  ---  starting solve for iteration: 1  ---  
+...current lambda:  13.3484
+...starting calcs for glm factor 1.33484
+see .log file for more details
+...finished calcs for: 1.33484
+...starting calcs for glm factor 13.3484
+see .log file for more details
+...finished calcs for: 13.3484
+...starting calcs for glm factor 133.484
+see .log file for more details
+...finished calcs for: 133.484
+
+  ---  running upgrade ensembles  ---  
+...3 inflation factors (lambdas) times 2 backtracking factors
+   times 4 realizations yields 24 model runs for upgrade testing
+...subset idx:pe real name:  16:29, 39:58, 55:95, 58:BASE, 
+...subset idx:oe real name:  16:29, 39:58, 55:95, 58:BASE, 
+
+  ---  evaluating upgrade ensembles  ---  
+...last mean:  74.9406
+...last stdev:  15.165
+...bad_phi_sigma 2 and mean 63.9951 yields bad phi threshold of 85.4386
+
+  ---  phi summary for lambda, scale fac:1.33484 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.9951        10.7218        54.8543        79.0977
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2      16.1      6.87       9.5      25.2      24.7      8.06
+smx         3          3      13.6      1.35      12.2      15.3      21.7      3.65
+ammet       3          2      10.6      2.34      9.05      14.1      16.8      4.08
+nit         3          2      7.83      6.57      2.63      17.3      11.4      7.65
+des         3          3      6.82     0.796      5.63      7.27      10.8      1.44
+no2         2          2       5.7      3.46      1.49      9.75      9.38      5.65
+undet       3          3      3.38     0.691      2.76      4.36      5.27     0.576
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 65.4976 yields bad phi threshold of 87.4873
+
+  ---  phi summary for lambda, scale fac:1.33484 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        65.4976        10.9949        56.7086        81.3206
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      17.7         9      9.54      29.9      26.4      10.2
+smx         3          3        14     0.975      12.8      14.9      21.7      2.69
+ammet       3          2      10.4      2.01      8.98      13.4      16.1      3.71
+nit         3          2      7.04      5.79      2.12      15.2        10      6.67
+no2         2          2      6.66      4.18      1.48      10.9      10.8      6.84
+des         3          3      6.52     0.693      5.54      7.09      10.1      1.62
+undet       3          3      3.14     0.533      2.57      3.86       4.8     0.464
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 63.6227 yields bad phi threshold of 79.942
+
+  ---  phi summary for lambda, scale fac:13.3484 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.6227        8.15963        53.7621        73.7455
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.3      3.09      11.4      17.9      21.1      5.01
+no3         2          2      12.4      2.52      9.92      15.8      19.5      3.46
+ammet       3          2      11.1      3.02      9.21      15.6      17.5      4.93
+nit         3          2      10.7      6.61      5.44      19.9      16.3      8.07
+des         3          1      7.59      1.15      5.97      8.69      11.9      1.31
+undet       3          3       4.3      1.31      3.42      6.23      6.72       1.5
+no2         2          2      4.25      2.53      1.54      7.61      6.91      4.17
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 63.2694 yields bad phi threshold of 79.8533
+
+  ---  phi summary for lambda, scale fac:13.3484 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.2694        8.29192        53.4577        73.7442
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.3       2.9      11.4      17.6      21.2      4.84
+no3         2          2      12.4      2.69      9.83      16.1      19.7      3.68
+ammet       3          2        11      2.95      9.19      15.4      17.6      4.87
+nit         3          2      10.5      6.64      5.37      19.7      15.9      8.09
+des         3          2       7.5      1.11      5.92       8.5      11.9      1.24
+no2         2          2      4.34      2.59      1.53      7.78       7.1      4.28
+undet       3          3       4.2      1.24      3.39      6.02       6.6       1.4
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 64.6133 yields bad phi threshold of 80.3618
+
+  ---  phi summary for lambda, scale fac:133.484 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        64.6133        7.87425        54.5628        73.7767
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.3      3.62      11.2      18.7      20.7      5.44
+no3         2          2      12.3      2.07      10.1      15.1      19.1      2.93
+nit         3          2      11.4      6.55      5.63      20.2      17.1      8.01
+ammet       3          2      11.2      3.18      9.26      15.9      17.5      5.07
+des         3          1      7.83       1.3      6.11      9.25      12.1      1.56
+undet       3          2      4.59      1.53      3.51      6.83      7.07      1.81
+no2         2          2      4.03      2.39      1.56      7.19      6.46      3.93
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 64.5611 yields bad phi threshold of 80.3236
+
+  ---  phi summary for lambda, scale fac:133.484 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        64.5611        7.88128        54.5245         73.762
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.3       3.6      11.2      18.7      20.8      5.42
+no3         2          2      12.3      2.08      10.1      15.1      19.1      2.95
+nit         3          2      11.3      6.55      5.63      20.2      17.1      8.02
+ammet       3          2      11.2      3.17      9.25      15.9      17.5      5.07
+des         3          1      7.82      1.29       6.1      9.22      12.1      1.55
+undet       3          2      4.58      1.52       3.5       6.8      7.05       1.8
+no2         2          2      4.04       2.4      1.56      7.21      6.48      3.94
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+  ---  phi summary for best lambda, scale fac: 13.3484 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.2694        8.29192        53.4577        73.7442
+
+
+
+  ---  running remaining realizations for best lambda, scale:13.3484 , 1 ,   ---  
+...bad_phi_sigma 2 and mean 72.161 yields bad phi threshold of 98.1983
+
+  ---  dropping realizations as bad:  1  ---  
+...dropping par:obs realizations: 53 : 53 , 
+...phi summary for entire ensemble using lambda,scale_fac 13.3484 , 1 , 
+       phi type           mean            std            min            max
+         actual        71.5652        12.2941        50.4339        97.8192
+
+
+...last best mean phi * acceptable phi factor:  78.6876
+...current best mean phi:  71.5652
+
+  ---  updating parameter ensemble  ---  
+
+  ---  updating lambda to  10.0113  ---  
+
+  ---  EnsembleMethod iteration 1 report  ---  
+   number of active realizations:  58
+   number of model runs:           79
+      current obs ensemble saved to anoxic_H.1.obs.csv
+      current par ensemble saved to anoxic_H.1.par.csv
+       phi type           mean            std            min            max
+         actual        71.5652        12.2941        50.4339        97.8192
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          2      15.3      5.87      7.69      37.9      21.2      6.03
+no3         2          1      13.8       4.7      8.84        29      19.3      5.11
+ammet       3          2      11.2      3.12       8.4      20.1        16      4.92
+nit         3          2        11      5.76      1.94      21.3      15.2      7.12
+des         3          0      7.74      2.79      2.21      15.6      10.9      3.47
+no2         2          1      6.26      3.59      1.53      15.4       8.9      4.87
+undet       3          1      6.25      3.42      2.26      16.8       8.5      3.81
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+geochem         5     12.71    56.16          1     0.3448          0          0           1
+antibiotics    11     38.24    34.03          1     0.1567          0          0           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+...saved parameter change summary to anoxic_H.1.pcs.csv
+
+  ---  phi-based termination criteria check  ---  
+...phiredstp:  0.01
+...nphistp:  3
+...nphinored (also used for consecutive bad lambda cycles):  3
+...best mean phi sequence: 74.9406 , 71.5652 , 
+...best phi yet:  71.5652
+...number of consecutive bad lambda testing cycles:  0
+...number of iterations satisfying phiredstp criteria:  1
+...number of iterations since best yet mean phi:  0
+
+  ---  starting solve for iteration: 2  ---  
+...current lambda:  10.0113
+...starting calcs for glm factor 1.00113
+see .log file for more details
+...finished calcs for: 1.00113
+...starting calcs for glm factor 10.0113
+see .log file for more details
+...finished calcs for: 10.0113
+...starting calcs for glm factor 100.113
+see .log file for more details
+...finished calcs for: 100.113
+
+  ---  running upgrade ensembles  ---  
+...3 inflation factors (lambdas) times 2 backtracking factors
+   times 4 realizations yields 24 model runs for upgrade testing
+...subset idx:pe real name:  3:BASE, 20:30, 25:37, 48:80, 
+...subset idx:oe real name:  3:BASE, 20:30, 25:37, 48:80, 
+
+  ---  evaluating upgrade ensembles  ---  
+...last mean:  71.5652
+...last stdev:  12.2941
+...bad_phi_sigma 2 and mean 64.9705 yields bad phi threshold of 88.3239
+
+  ---  phi summary for lambda, scale fac:1.00113 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        64.9705        11.6767        54.8518         76.996
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      21.6      8.44      16.2      34.2      33.1      9.83
+smx         3          3      13.3     0.803      12.4      14.3        21      3.39
+ammet       3          3      9.18     0.131         9      9.28      14.5      2.51
+no2         2          2      8.13      8.84      1.84      21.2      11.8      10.9
+des         3          3      7.06       1.3      5.51      8.67        11       1.7
+undet       3          3      3.15      1.06      2.23      4.63      4.84      1.23
+nit         3          2      2.52     0.983      1.96      3.98      3.88      1.21
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 67.518 yields bad phi threshold of 93.8477
+
+  ---  phi summary for lambda, scale fac:1.00113 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual         67.518        13.1648          55.13        80.7575
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      23.2      13.1      13.5      42.6        34      14.5
+smx         3          3      13.9     0.824      12.9      14.9      21.1      3.21
+ammet       3          2      9.15     0.169      8.94      9.33      13.9       2.5
+no2         2          2      9.04      10.5      1.72      24.5      12.9      13.1
+des         3          3      6.67      1.23      5.47      8.39      9.99      1.58
+undet       3          3      2.99     0.987      2.17      4.36      4.46      1.25
+nit         3          2      2.49     0.698      1.86      3.45      3.66     0.435
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 63.4289 yields bad phi threshold of 90.4083
+
+  ---  phi summary for lambda, scale fac:10.0113 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.4289        13.4897        52.8449        82.8936
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      18.9      7.66      12.6      29.2      28.9      5.95
+smx         3          3      12.4      1.09      11.3      13.5      20.2      4.42
+ammet       3          2      9.39     0.429      9.08        10      15.3      3.12
+des         3          2      8.51       2.1      5.77      10.6      13.6      3.64
+no2         2          2      6.72      6.18      2.04      15.8      9.73      6.67
+nit         3          2      3.85      1.53       2.3      5.46      6.45      3.08
+undet       3          3      3.74       1.4      2.37      5.68      5.82      1.34
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 63.7245 yields bad phi threshold of 91.5736
+
+  ---  phi summary for lambda, scale fac:10.0113 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.7245        13.9246        52.6579        83.5769
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      19.4      7.67      12.9      29.2      29.7      5.96
+smx         3          3      12.4      1.09      11.4      13.6      20.2      4.48
+ammet       3          2      9.36     0.375       9.1       9.9      15.2      3.15
+des         3          2      8.31      1.97      5.72      10.2      13.2       3.4
+no2         2          2      6.84      6.55      1.95      16.5      9.82      7.04
+nit         3          2       3.7      1.43       2.3      5.33      6.14      2.81
+undet       3          3      3.68      1.38      2.35      5.59       5.7       1.3
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 62.9309 yields bad phi threshold of 88.0094
+
+  ---  phi summary for lambda, scale fac:100.113 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        62.9309        12.5393        53.3692        81.3614
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      17.5      7.91      11.9        29        27       6.5
+smx         3          3      12.2      1.09        11      13.2      19.9      4.28
+ammet       3          2      9.48     0.578      9.04      10.3      15.5      3.05
+des         3          2      9.08      2.54       5.9        12      14.6      4.38
+no2         2          2      6.48      5.32       2.3      14.3      9.55      5.74
+nit         3          2      4.25      1.86      2.28      5.87      7.22      3.83
+undet       3          3      3.93      1.47      2.43      5.92      6.16      1.48
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 62.9494 yields bad phi threshold of 88.1212
+
+  ---  phi summary for lambda, scale fac:100.113 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        62.9494        12.5859        53.3409        81.4394
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      17.6       7.9      11.9        29      27.1      6.46
+smx         3          3      12.2      1.09        11      13.2        20      4.29
+ammet       3          2      9.47     0.571      9.04      10.3      15.5      3.05
+des         3          2      9.06      2.52      5.89      11.9      14.6      4.34
+no2         2          2      6.49      5.36      2.29      14.3      9.56      5.79
+nit         3          2      4.24      1.84      2.29      5.82      7.19       3.8
+undet       3          3      3.92      1.47      2.43      5.92      6.15      1.47
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+  ---  phi summary for best lambda, scale fac: 100.113 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        62.9309        12.5393        53.3692        81.3614
+
+
+
+  ---  running remaining realizations for best lambda, scale:100.113 , 0.75 ,   ---  
+...bad_phi_sigma 2 and mean 71.4213 yields bad phi threshold of 95.8768
+
+  ---  dropping realizations as bad:  1  ---  
+...dropping par:obs realizations: 38 : 38 , 
+...phi summary for entire ensemble using lambda,scale_fac 100.113 , 0.75 , 
+       phi type           mean            std            min            max
+         actual        70.9603        11.8168        50.3414        94.8072
+
+
+...last best mean phi * acceptable phi factor:  75.1434
+...current best mean phi:  70.9603
+
+  ---  updating parameter ensemble  ---  
+
+  ---  updating lambda to  75.0847  ---  
+
+  ---  EnsembleMethod iteration 2 report  ---  
+   number of active realizations:  57
+   number of model runs:           157
+      current obs ensemble saved to anoxic_H.2.obs.csv
+      current par ensemble saved to anoxic_H.2.par.csv
+       phi type           mean            std            min            max
+         actual        70.9603        11.8168        50.3414        94.8072
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          2      14.9      5.05       7.7      30.3      20.9      5.59
+no3         2          1      13.9      4.81      8.84        29      19.5      5.22
+ammet       3          2      11.2      3.13      8.39      20.1      16.1      4.87
+nit         3          2      10.9      5.78      1.92      21.3      15.1      7.17
+des         3          0      7.74      2.76      2.22      15.5      10.9      3.39
+no2         2          1      6.29      3.61      1.52      15.3         9       4.9
+undet       3          1      6.11      3.34      2.25      16.6       8.4      3.79
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+geochem         5     12.57     56.6          1     0.3509          0          0           1
+antibiotics    11     38.09    34.23          1     0.1595          0          0           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+...saved parameter change summary to anoxic_H.2.pcs.csv
+
+  ---  phi-based termination criteria check  ---  
+...phiredstp:  0.01
+...nphistp:  3
+...nphinored (also used for consecutive bad lambda cycles):  3
+...best mean phi sequence: 74.9406 , 71.5652 , 70.9603 , 
+...best phi yet:  70.9603
+...number of consecutive bad lambda testing cycles:  0
+...number of iterations satisfying phiredstp criteria:  2
+...number of iterations since best yet mean phi:  0
+
+  ---  starting solve for iteration: 3  ---  
+...current lambda:  75.0847
+...starting calcs for glm factor 7.50848
+see .log file for more details
+...finished calcs for: 7.50848
+...starting calcs for glm factor 75.0847
+see .log file for more details
+...finished calcs for: 75.0847
+...starting calcs for glm factor 750.847
+see .log file for more details
+...finished calcs for: 750.847
+
+  ---  running upgrade ensembles  ---  
+...3 inflation factors (lambdas) times 2 backtracking factors
+   times 4 realizations yields 24 model runs for upgrade testing
+...subset idx:pe real name:  0:BASE, 5:58, 27:40, 36:51, 
+...subset idx:oe real name:  0:BASE, 5:58, 27:40, 36:51, 
+
+  ---  evaluating upgrade ensembles  ---  
+...last mean:  70.9603
+...last stdev:  11.8168
+...bad_phi_sigma 2 and mean 64.185 yields bad phi threshold of 81.8687
+
+  ---  phi summary for lambda, scale fac:7.50848 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual         64.185        8.84182        52.5072        72.2032
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.5         2      11.6      15.3        21      1.35
+ammet       3          2      11.3      2.71      9.09      14.7      17.7      4.35
+no3         2          2        11       2.1       8.9      13.8      17.7      6.11
+nit         3          2      8.72      7.58      4.36      20.1        13      9.88
+des         3          2      7.84       2.2      5.74      10.9      12.2      2.62
+no2         2          1      7.77      4.54      4.32      14.1      11.9      6.18
+undet       3          3      4.12      1.51      3.23      6.36      6.43      2.06
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 63.4196 yields bad phi threshold of 79.9731
+
+  ---  phi summary for lambda, scale fac:7.50848 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.4196        8.27672        52.2668        70.6988
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.4      1.77      11.7      14.9      21.1       1.3
+ammet       3          2      11.2      2.61      9.07      14.5      17.7      4.13
+no3         2          1      11.1      2.22      8.97      14.1      18.1      6.31
+nit         3          2      8.53      7.64      3.88      19.9      12.8      10.2
+des         3          2      7.71       2.1      5.69      10.6      12.1      2.51
+no2         2          1      7.53      4.54      3.87      13.7      11.7      6.34
+undet       3          3         4      1.45      3.12      6.16      6.33      2.02
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 66.7153 yields bad phi threshold of 88.5573
+
+  ---  phi summary for lambda, scale fac:75.0847 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        66.7153         10.921         53.224        77.7397
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.8      2.61      11.5      16.2      20.6      1.52
+ammet       3          2      11.5      2.98      9.12      15.3      17.6      4.93
+no3         2          1        11      1.66      8.83      12.9      17.1      5.22
+nit         3          2      9.23      7.41      5.32      20.3      13.2      8.72
+no2         2          1      8.51      4.66      4.29      15.1      12.5      5.83
+des         3          2       8.2      2.49      5.88      11.6      12.3      2.99
+undet       3          3      4.44      1.67      3.37      6.93      6.68      2.19
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 66.5664 yields bad phi threshold of 88.1688
+
+  ---  phi summary for lambda, scale fac:75.0847 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        66.5664        10.8012        53.1731        77.4007
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.8      2.58      11.5      16.2      20.7      1.52
+ammet       3          2      11.5      2.97      9.11      15.2      17.6       4.9
+no3         2          1        11      1.66      8.83      12.9      17.1      5.26
+nit         3          2      9.21      7.42      5.32      20.3      13.2      8.78
+no2         2          1      8.47      4.65      4.29      15.1      12.5      5.84
+des         3          2      8.18      2.47      5.87      11.6      12.3      2.97
+undet       3          3      4.42      1.67      3.36       6.9      6.67      2.18
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 67.1215 yields bad phi threshold of 89.6321
+
+  ---  phi summary for lambda, scale fac:750.847 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        67.1215        11.2553         53.355        78.6705
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.8      2.68      11.4      16.4      20.6      1.54
+ammet       3          2      11.6      3.01      9.12      15.3      17.5         5
+no3         2          1      11.1      1.65      8.84      12.8      17.1      5.09
+nit         3          2      9.29      7.39      5.34      20.4      13.2      8.56
+no2         2          1      8.63      4.69       4.3      15.3      12.6       5.8
+des         3          2      8.24      2.52       5.9      11.7      12.3      3.05
+undet       3          3      4.48      1.69      3.38         7      6.71      2.21
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 67.1042 yields bad phi threshold of 89.5896
+
+  ---  phi summary for lambda, scale fac:750.847 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        67.1042        11.2427        53.3467        78.6317
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+smx         3          3      13.8      2.68      11.5      16.3      20.6      1.54
+ammet       3          2      11.6      3.01      9.12      15.3      17.5      4.99
+no3         2          1      11.1      1.65      8.84      12.8      17.1       5.1
+nit         3          2      9.29      7.39      5.34      20.4      13.2      8.56
+no2         2          1      8.62      4.69       4.3      15.3      12.6       5.8
+des         3          2      8.24      2.52       5.9      11.7      12.3      3.04
+undet       3          3      4.48      1.69      3.38         7      6.71      2.21
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+  ---  phi summary for best lambda, scale fac: 7.50848 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        63.4196        8.27672        52.2668        70.6988
+
+
+
+  ---  running remaining realizations for best lambda, scale:7.50848 , 1 ,   ---  
+...bad_phi_sigma 2 and mean 69.7555 yields bad phi threshold of 94.5924
+
+  ---  dropping realizations as bad:  1  ---  
+...dropping par:obs realizations: 7 : 7 , 
+...phi summary for entire ensemble using lambda,scale_fac 7.50848 , 1 , 
+       phi type           mean            std            min            max
+         actual        69.2099        11.8214        48.7583        93.9471
+
+
+...last best mean phi * acceptable phi factor:  74.5083
+...current best mean phi:  69.2099
+
+  ---  updating parameter ensemble  ---  
+
+  ---  updating lambda to  5.63136  ---  
+
+  ---  EnsembleMethod iteration 3 report  ---  
+   number of active realizations:  56
+   number of model runs:           234
+      current obs ensemble saved to anoxic_H.3.obs.csv
+      current par ensemble saved to anoxic_H.3.par.csv
+       phi type           mean            std            min            max
+         actual        69.2099        11.8214        48.7583        93.9471
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      15.1      6.18      8.97      29.7      21.5      6.66
+smx         3          2      14.7      5.06      7.77        33      21.2      5.61
+ammet       3          2      10.9      2.93      8.29        20      16.1      4.72
+nit         3          2      9.56      5.61      1.56      21.2      13.7      7.18
+des         3          0      7.28      2.41      2.38      13.3      10.6         3
+no2         2          1      6.22      3.78      1.43      18.1       9.2      5.19
+undet       3          1      5.47       2.8      2.12      13.6      7.77      3.36
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+geochem         5     13.45    58.38          1     0.3571          0          0           1
+antibiotics    11      40.3    36.32          0          0          0          0           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+...saved parameter change summary to anoxic_H.3.pcs.csv
+
+  ---  phi-based termination criteria check  ---  
+...phiredstp:  0.01
+...nphistp:  3
+...nphinored (also used for consecutive bad lambda cycles):  3
+...best mean phi sequence: 74.9406 , 71.5652 , 70.9603 , 69.2099 , 
+...best phi yet:  69.2099
+...number of consecutive bad lambda testing cycles:  0
+...number of iterations satisfying phiredstp criteria:  1
+...number of iterations since best yet mean phi:  0
+
+  ---  starting solve for iteration: 4  ---  
+...current lambda:  5.63136
+...starting calcs for glm factor 0.563136
+see .log file for more details
+...finished calcs for: 0.563136
+...starting calcs for glm factor 5.63136
+see .log file for more details
+...finished calcs for: 5.63136
+...starting calcs for glm factor 56.3136
+see .log file for more details
+...finished calcs for: 56.3136
+
+  ---  running upgrade ensembles  ---  
+...3 inflation factors (lambdas) times 2 backtracking factors
+   times 4 realizations yields 24 model runs for upgrade testing
+...subset idx:pe real name:  0:BASE, 10:1, 12:4, 25:33, 
+...subset idx:oe real name:  0:BASE, 10:1, 12:4, 25:33, 
+
+  ---  evaluating upgrade ensembles  ---  
+...last mean:  69.2099
+...last stdev:  11.8214
+...bad_phi_sigma 2 and mean 58.216 yields bad phi threshold of 74.241
+
+  ---  phi summary for lambda, scale fac:0.563136 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual         58.216         8.0125        48.5625        67.1437
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2      16.6      4.39      12.7      21.7      28.5      5.72
+smx         3          3      13.3      2.36      11.5      16.7      22.9      3.57
+ammet       3          2      9.76      1.71      8.63      12.3      16.8      2.25
+no2         2          2      6.51      1.19      5.51      8.18      11.3      2.49
+des         3          2      5.31      1.03       4.1       6.6      9.27      2.14
+undet       3          3      3.52     0.999      2.73      4.97      6.06      1.38
+nit         3          2      3.23      3.02     0.245      6.11      5.11      4.58
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 60.2431 yields bad phi threshold of 75.5846
+
+  ---  phi summary for lambda, scale fac:0.563136 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        60.2431        7.67075        50.3027        67.9856
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2      18.3      4.95      13.3      24.1      30.2         6
+smx         3          3      13.7      3.35      10.9      18.6      22.7      4.47
+ammet       3          2      9.51      1.29      8.61      11.4      15.9      2.06
+no2         2          2      7.03      1.23      5.94      8.75      11.8      2.43
+des         3          2      5.25     0.913      4.19      6.37      8.82      1.79
+undet       3          3      3.52     0.893      2.95      4.83      5.86      1.22
+nit         3          0      2.96      1.72      1.51      5.07      4.73      2.27
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 56.6527 yields bad phi threshold of 69.8961
+
+  ---  phi summary for lambda, scale fac:5.63136 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        56.6527        6.62173        51.0929        65.0629
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2        13      2.73      10.4      16.3      22.9      4.19
+smx         3          3      12.7     0.747        12      13.7      22.6      2.37
+ammet       3          2      10.2      2.52      8.69        14      17.9      2.77
+nit         3          2      5.78      3.22      2.85      9.08      9.88      4.79
+no2         2          2      5.64      1.09      4.79      7.12      10.1      2.14
+des         3          2      5.62      1.35      4.06      7.35      10.1      2.68
+undet       3          3      3.73      1.25      2.51      5.48      6.56      1.73
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 56.3267 yields bad phi threshold of 69.8345
+
+  ---  phi summary for lambda, scale fac:5.63136 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        56.3267        6.75392        50.3276        64.7459
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2        13      2.73      10.5      16.4      23.1      4.14
+smx         3          3      12.8     0.896      12.1      14.1      22.9      2.39
+ammet       3          2      10.1      2.38      8.67      13.7      17.9      2.64
+no2         2          2       5.8       1.1      4.92      7.29      10.4      2.19
+des         3          2      5.56      1.32      4.03      7.25        10      2.64
+nit         3          2      5.38      3.25      2.52      8.53      9.19      4.86
+undet       3          3      3.68      1.21      2.53      5.37      6.51      1.68
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 57.5072 yields bad phi threshold of 70.0684
+
+  ---  phi summary for lambda, scale fac:56.3136 , 0.75 ,   ---  
+       phi type           mean            std            min            max
+         actual        57.5072        6.28056        52.1065        65.7598
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2      12.8      2.66      10.1        16      22.3      4.19
+smx         3          3      12.4     0.578      11.7        13      21.8       2.4
+ammet       3          2      10.4      2.88      8.72      14.7        18       3.2
+nit         3          2      6.82      3.12      3.75      10.4      11.6      4.65
+des         3          2      5.81      1.43      4.15      7.64      10.2       2.8
+no2         2          2      5.27      1.08      4.42      6.73      9.24      2.02
+undet       3          3       3.9      1.38      2.49      5.79      6.73       1.9
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+...bad_phi_sigma 2 and mean 57.4452 yields bad phi threshold of 70.0351
+
+  ---  phi summary for lambda, scale fac:56.3136 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        57.4452        6.29497        52.0462        65.6991
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          2      12.8      2.65      10.1      15.9      22.3      4.16
+smx         3          3      12.5     0.575      11.7      12.9      21.9      2.39
+ammet       3          2      10.4      2.86      8.72      14.7        18      3.18
+nit         3          2      6.78      3.13      3.71      10.4      11.6      4.65
+des         3          2       5.8      1.43      4.14      7.62      10.2       2.8
+no2         2          2      5.29      1.08      4.44      6.75      9.29      2.02
+undet       3          3      3.89      1.38      2.49      5.77      6.72      1.89
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+  ---  phi summary for best lambda, scale fac: 5.63136 , 1 ,   ---  
+       phi type           mean            std            min            max
+         actual        56.3267        6.75392        50.3276        64.7459
+
+
+
+  ---  running remaining realizations for best lambda, scale:5.63136 , 1 ,   ---  
+...bad_phi_sigma 2 and mean 67.3557 yields bad phi threshold of 90.2528
+
+  ---  dropping realizations as bad:  3  ---  
+...dropping par:obs realizations: 10 : 10 , 73 : 73 , 89 : 89 , 
+...phi summary for entire ensemble using lambda,scale_fac 5.63136 , 1 , 
+       phi type           mean            std            min            max
+         actual        65.8198        9.64438        45.3608         84.972
+
+
+...last best mean phi * acceptable phi factor:  72.6704
+...current best mean phi:  65.8198
+
+  ---  updating parameter ensemble  ---  
+
+  ---  updating lambda to  4.22352  ---  
+
+  ---  EnsembleMethod iteration 4 report  ---  
+   number of active realizations:  53
+   number of model runs:           310
+      current obs ensemble saved to anoxic_H.4.obs.csv
+      current par ensemble saved to anoxic_H.4.par.csv
+       phi type           mean            std            min            max
+         actual        65.8198        9.64438        45.3608         84.972
+  ---  observation group phi summary ---  
+       (computed using 'actual' phi)
+           (sorted by mean phi)
+group   count  nconflict      mean       std       min       max   percent       std
+no3         2          1      14.6      5.31      8.49      29.5      22.1      6.41
+smx         3          2      14.3      4.38      7.45      28.4      21.7      5.27
+ammet       3          2      10.5      2.57      8.21      19.8      16.2      4.36
+nit         3          1       8.1      5.14      1.12        21      12.1      7.11
+des         3          1      6.75      1.97      2.24      11.7      10.3      2.79
+no2         2          1      6.65      3.59      1.55      17.2      10.2       5.1
+undet       3          1      4.87      2.29      2.08      11.3      7.31      2.96
+    Note: 'percent' is the percentage of the actual phi for each realization.
+
+
+
+
+   ---  parameter group change summary  ---    
+group       count  mean chg  std chg  n at ubnd  % at ubnd  n at lbnd  % at lbnd  n std decr
+geochem         5     13.66    59.37          1     0.3774          0          0           1
+antibiotics    11     43.67    38.42          0          0          0          0           0
+    Note: parameter change summary sorted according to percent at bounds.
+    Note: the parameter change statistics implicitly include the effect of 
+          realizations that have failed or have been dropped.
+    Note: the 'n std decr' is the number of parameters with current
+          std less 5% of their initial std.
+
+...saved parameter change summary to anoxic_H.4.pcs.csv
+
+  ---  phi-based termination criteria check  ---  
+...phiredstp:  0.01
+...nphistp:  3
+...nphinored (also used for consecutive bad lambda cycles):  3
+...best mean phi sequence: 74.9406 , 71.5652 , 70.9603 , 69.2099 , 65.8198 , 
+...best phi yet:  65.8198
+...number of consecutive bad lambda testing cycles:  0
+...number of iterations satisfying phiredstp criteria:  1
+...number of iterations since best yet mean phi:  0
+...solution iterations >= noptmax, all done
+
+
+pestpp-ies analysis complete...
+started at 10/28/26 15:51:36
+finished at 10/28/26 16:02:15
+took 10.6333 minutes

@@ -1,0 +1,17 @@
+parnme,partrans,parchglim,parval1,parlbnd,parubnd,pargp,scale,offset,dercom
+k1,log,factor,0.03,0.0003,3.0,geochem,1.0,0.0,1
+k10,log,factor,1.5e+18,1500000000000000.0,1.5e+21,antibiotics,1.0,0.0,1
+k11,log,factor,5000.0,50.0,500000.0,antibiotics,1.0,0.0,1
+k12,log,factor,120000.0,1200.0,12000000.0,antibiotics,1.0,0.0,1
+k13,log,factor,8.0,0.08,800.0,antibiotics,1.0,0.0,1
+k14,log,factor,0.5,0.005,50.0,antibiotics,1.0,0.0,1
+k15,log,factor,200000.0,2000.0,20000000.0,antibiotics,1.0,0.0,1
+k16,log,factor,8.0,0.08,800.0,antibiotics,1.0,0.0,1
+k2,log,factor,0.0002,2.0000000000000003e-06,0.02,geochem,1.0,0.0,1
+k6,log,factor,2500.0,25.0,250000.0,geochem,1.0,0.0,1
+k7,log,factor,4000.0,40.0,400000.0,geochem,1.0,0.0,1
+k8,log,factor,0.004,4e-05,0.4,antibiotics,1.0,0.0,1
+k9,log,factor,2e+26,2.0000000000000002e+23,2.0000000000000002e+29,antibiotics,1.0,0.0,1
+kl2_ch2o,log,factor,1.5e-05,1.5000000000000002e-07,0.0015,antibiotics,1.0,0.0,1
+kl_ch2o,log,factor,1.6315e-07,1.6315e-09,1.6315e-05,antibiotics,1.0,0.0,1
+kl_no3,log,factor,0.0015,1.5e-05,0.15,geochem,1.0,0.0,1

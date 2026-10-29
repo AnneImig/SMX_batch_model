@@ -1,0 +1,9 @@
+dataset,setup,iteration,adjustable_parameters,observations,realizations,phi_median,phi_min,phi_smx_median,phi_des_median,phi_nit_median,phi_ammet_median,phi_undet_median,phi_no3_median,phi_no2_median,phi_doc_median
+oxic-H,Full model,8,16,20,61,22.94,9.366,3.211,4.904,6.012,2.362,2.937,,,
+oxic-H,"Without nitrification (R4, R5)",8,14,20,66,21.18,17.74,3.308,2.074,10.01,2.429,2.913,,,
+oxic-H,"Without undetected TPs (R15, R16)",8,14,16,60,112,104,97.67,3.824,2.208,5.913,,,,
+oxic-H,Without biologically mediated DeA-SMX (R10),8,15,20,64,24.8,10.72,3.309,5.078,4.227,3.494,3.833,,,
+anoxic-H,Full model,12,16,19,53,66.55,45.36,13.54,6.902,6.548,9.405,4.165,12.79,5.796,
+anoxic-H,Without R10,12,15,19,51,53.76,44.62,13.73,7.241,0.3577,9.391,4.46,11.76,2.612,
+anoxic-NDL,Full model,7,16,41,63,211.4,189.2,50.95,24.97,18.43,,,34.29,73.84,4.682
+anoxic-NDL,Without R10,7,15,41,63,203,197.5,53.64,31.37,9.287,,,29.41,73.62,4.441

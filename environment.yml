@@ -1,0 +1,14 @@
+name: smx_batch_model
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - openpyxl
+  - pip
+  - pip:
+      - phreeqpython      # IPhreeqc wrapper used by model/forward_run.py
+      - pyemu             # PEST++ file handling (only needed to rebuild the calibration set-ups)
